@@ -1,0 +1,15 @@
+build/
+.vs/
+out/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+Testing/
+*.obj
+*.exe
+*.log
+*.ilk
+*.pdb
+*.md
+!README.md
