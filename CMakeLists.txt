@@ -6,7 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(kvstore
     src/kv_store.cpp
+    src/thread_pool.cpp
     src/wal.cpp
+    src/server.cpp
 )
 
 target_include_directories(kvstore PUBLIC include)
@@ -14,6 +16,9 @@ target_include_directories(kvstore PUBLIC include)
 if (WIN32)
     target_link_libraries(kvstore ws2_32)
 endif()
+
+add_executable(kv_server src/main.cpp)
+target_link_libraries(kv_server kvstore)
 
 add_executable(kv_tests tests/test_kv_store.cpp)
 target_link_libraries(kv_tests kvstore)
