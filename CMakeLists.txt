@@ -26,5 +26,11 @@ target_link_libraries(kv_tests kvstore)
 add_executable(kv_benchmark benchmarks/benchmark.cpp)
 target_link_libraries(kv_benchmark kvstore)
 
+add_executable(kv_tcp_benchmark benchmarks/tcp_benchmark.cpp)
+target_link_libraries(kv_tcp_benchmark kvstore)
+if (WIN32)
+    target_link_libraries(kv_tcp_benchmark ws2_32)
+endif()
+
 enable_testing()
 add_test(NAME kv_tests COMMAND kv_tests)
